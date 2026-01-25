@@ -9,5 +9,4 @@ package poo.areopuerto.controlers;
  * @author David Proaño
  */
 public class AereopuertoController {
-    
 }
