@@ -10,7 +10,9 @@ import java.util.ArrayList;
  * @author David Proaño
  */
 public class Aereolinea {
+     
     private String nombre;
+    private String paisOrigen;
     private ArrayList<Avion> aviones= new ArrayList<>();
     private String codigo;
 
@@ -29,6 +31,16 @@ public class Aereolinea {
     }
     
     /*getters y setters*/
+
+    public String getPaisOrigen() {
+        return paisOrigen;
+    }
+
+    public void setPaisOrigen(String paisOrigen) {
+        this.paisOrigen = paisOrigen;
+    }
+    
+    
     public String getNombre() {
         return nombre;
     }

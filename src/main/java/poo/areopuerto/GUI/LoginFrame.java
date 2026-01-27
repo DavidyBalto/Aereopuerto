@@ -4,6 +4,8 @@
  */
 package poo.areopuerto.GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author erick
@@ -38,7 +40,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnIngresar = new javax.swing.JButton();
-        lblMensaje = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,7 +71,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 102, 153));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/areopuerto/GUI/resoruces/avion2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\erick\\Pictures\\Screenshots\\avion2.png")); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -86,14 +87,12 @@ public class LoginFrame extends javax.swing.JFrame {
 
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtPassword.setText("jPasswordField1");
+        txtPassword.addActionListener(this::txtPasswordActionPerformed);
 
         btnIngresar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(51, 102, 153));
         btnIngresar.setText("Ingresar");
         btnIngresar.addActionListener(this::btnIngresarActionPerformed);
-
-        lblMensaje.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
-        lblMensaje.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -119,11 +118,8 @@ public class LoginFrame extends javax.swing.JFrame {
                                         .addComponent(txtUsuario))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(153, 153, 153)
-                                .addComponent(btnIngresar))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 103, Short.MAX_VALUE)))
+                                .addComponent(btnIngresar)))
+                        .addGap(0, 106, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -131,19 +127,17 @@ public class LoginFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnIngresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,18 +162,26 @@ public class LoginFrame extends javax.swing.JFrame {
         String usuario = txtUsuario.getText();
     String password = new String(txtPassword.getPassword());
     
-    // Validación simple (luego la cambias por tu lógica)
+    // Validación simple (cámbiala por tu lógica real)
     if (usuario.equals("admin") && password.equals("admin123")) {
-        lblMensaje.setText("");
-        // Abrir la ventana principal
-        MainFrame main = new MainFrame();
-        main.setVisible(true);
-        this.dispose(); // Cierra la ventana de login
+        // Abrir menú principal
+        MenuPrincipalFrame menu = new MenuPrincipalFrame();
+        menu.setVisible(true);
+        
+        // Cerrar login
+        this.dispose();
     } else {
-        lblMensaje.setText("Usuario o contraseña incorrectos");
-        txtPassword.setText(""); // Limpiar campo
+        JOptionPane.showMessageDialog(this, 
+            "Usuario o contraseña incorrectos", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        txtPassword.setText("");
     }
+
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,7 +216,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblMensaje;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
