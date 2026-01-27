@@ -12,16 +12,16 @@ import poo.areopuerto.models.AereopuertoModel;
 
 /**
  *
- * @author David Proaño
+ * @author erick
  */
-public class MainInterface extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainInterface.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
     /**
-     * Creates new form MainInterface
+     * Creates new form MainFrame
      */
-    public MainInterface() {
+    public MainFrame() {
         initComponents();
     }
 
@@ -34,28 +34,48 @@ public class MainInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        menuArchivo = new javax.swing.JMenu();
+        menuSalir = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        menuRegistrarAerolinea = new javax.swing.JMenuItem();
+        menuListarAerolineas = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        menuCrearVuelo = new javax.swing.JMenuItem();
+        menuConsultarVuelos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Administrador de Vuelos - Sistema");
+        setSize(new java.awt.Dimension(1000, 700));
 
-        jLabel1.setText("Acceso");
+        menuArchivo.setText("Archivo");
 
-        jMenu1.setText("Vuelos");
+        menuSalir.setText("Salir");
+        menuSalir.addActionListener(this::menuSalirActionPerformed);
+        menuArchivo.add(menuSalir);
+
+        jMenuBar1.add(menuArchivo);
+
+        jMenu1.setText("Areolineas");
+
+        menuRegistrarAerolinea.setText("Registrar Aerolínea");
+        menuRegistrarAerolinea.addActionListener(this::menuRegistrarAerolineaActionPerformed);
+        jMenu1.add(menuRegistrarAerolinea);
+
+        menuListarAerolineas.setText("Listar Aerolíneas");
+        jMenu1.add(menuListarAerolineas);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Aviones");
+        jMenu2.setText("Vuelos");
+
+        menuCrearVuelo.setText("Crear Vuelo");
+        jMenu2.add(menuCrearVuelo);
+
+        menuConsultarVuelos.setText("Consultar Vuelos");
+        jMenu2.add(menuConsultarVuelos);
+
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Aereolineas");
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Resumen");
-        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -63,21 +83,23 @@ public class MainInterface extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(474, Short.MAX_VALUE))
+            .addGap(0, 716, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(357, Short.MAX_VALUE))
+            .addGap(0, 451, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_menuSalirActionPerformed
+
+    private void menuRegistrarAerolineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegistrarAerolineaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuRegistrarAerolineaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,15 +130,18 @@ public class MainInterface extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new MainInterface().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuArchivo;
+    private javax.swing.JMenuItem menuConsultarVuelos;
+    private javax.swing.JMenuItem menuCrearVuelo;
+    private javax.swing.JMenuItem menuListarAerolineas;
+    private javax.swing.JMenuItem menuRegistrarAerolinea;
+    private javax.swing.JMenuItem menuSalir;
     // End of variables declaration//GEN-END:variables
 }
