@@ -8,6 +8,16 @@ import java.util.List;
 import poo.areopuerto.FilesUtils.*;
 import poo.areopuerto.models.AereopuertoModel;
 
+/* Datos para pruebas
+        Aereopuerto AE = new Aereopuerto("Aere", 2, "Ecuador", "Quito", 2, true);
+        AereopuertoModel A= new AereopuertoModel();
+        Avion A1 = new AvionDeCarga("ABC", "DFG", "HIJG", true, 1234);
+        Avion A2 = new AvionPasajeros("ABC", "DFG", "HIJG", true, 1234);
+        A.agregar(A1.toString(), "avion.txt");
+        A.agregar(A2.toString(), "avion.txt");
+        A.agregar(AE.toString(), "aereopuerto.txt");
+*/
+
 public class SCRUD {
 
   public void agregar(String datos, String path){
