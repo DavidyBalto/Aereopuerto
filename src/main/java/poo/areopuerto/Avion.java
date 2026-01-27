@@ -3,27 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package poo.areopuerto;
-import java.util.UUID;
+
 /**
  *
  * @author David Proaño
  */
-public class Avion {
+public abstract class Avion {
     private String placa;
     private String marca;
     private String modelo;
-    private Aereopuerto aereopuertoU;
+    //Esto es redundante, ya que el avion pertenece al aereopuertoController y no el aereopuerto al Avion
+    //private Aereopuerto aereopuertoU;
     private boolean enVuelo;
-    private static UUID idAvion= UUID.randomUUID();
+    private static int idAvion= 0;
 
-    public Avion(String placa, String marca, String modelo, Aereopuerto aereopuertoU, boolean enVuelo, int idAvion) {
+    public Avion(String placa, String marca, String modelo,/* Aereopuerto aereopuertoU,*/ boolean enVuelo) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
-        this.aereopuertoU = aereopuertoU;
+        //this.aereopuertoU = aereopuertoU;
         this.enVuelo = enVuelo;
+        idAvion++;
     }
 
+    @Override
+    public String toString() {
+        return "Avion{" +"idAvon"+idAvion+ "placa=" + placa + ", marca=" 
+        + marca + ", modelo=" + modelo +/* ", aereopuertoU=" + aereopuertoU + */", enVuelo=" + enVuelo + '}';
+    }
+
+    
     public String getPlaca() {
         return placa;
     }
@@ -47,7 +56,7 @@ public class Avion {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-
+    /*
     public Aereopuerto getAereopuertoU() {
         return aereopuertoU;
     }
@@ -55,7 +64,7 @@ public class Avion {
     public void setAereopuertoU(Aereopuerto aereopuertoU) {
         this.aereopuertoU = aereopuertoU;
     }
-
+    */
     public boolean isEnVuelo() {
         return enVuelo;
     }
@@ -64,16 +73,13 @@ public class Avion {
         this.enVuelo = enVuelo;
     }
 
-    public static UUID getIdAvion() {
+    public static int getIdAvion() {
         return idAvion;
     }
 
-    public static void setIdAvion(UUID idAvion) {
-        Avion.idAvion = idAvion;
-    }
+
     
     
-    
-                
+
             
 }

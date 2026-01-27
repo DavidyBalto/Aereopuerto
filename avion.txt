@@ -1,0 +1,16 @@
+AvionDeCarga{cantidadObjetos=0, pesoMaximo=1234, peso=0, obejtos=[]}
+
+AvionPasajeros{cantidadPasajeros=1, capacidadPasajeros=2, pasajeros=[]}
+
+AvionDeCarga{cantidadObjetos=0, pesoMaximo=1234, peso=0, obejtos=[]}
+
+AvionPasajeros{cantidadPasajeros=0, capacidadPasajeros=1234, pasajeros=[]}
+
+AvionDeCarga{cantidadObjetos=0, pesoMaximo=1234, peso=0, obejtos=[]}
+
+AvionPasajeros{cantidadPasajeros=0, capacidadPasajeros=1234, pasajeros=[]}
+
+AvionDeCarga{cantidadObjetos=0, pesoMaximo=1234, peso=0, obejtos=[]}
+
+AvionPasajeros{cantidadPasajeros=0, capacidadPasajeros=1234, pasajeros=[]}
+
