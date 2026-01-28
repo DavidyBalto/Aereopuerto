@@ -35,7 +35,6 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -64,25 +63,31 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         setTitle("Administrador de Vuelos - Sistema");
         setSize(new java.awt.Dimension(1000, 700));
 
-        jPanel4.setBackground(new java.awt.Color(255, 102, 51));
+        jPanel4.setBackground(new java.awt.Color(51, 102, 153));
 
-        imgMenuAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/areopuerto/GUI/resoruces/menuImage.png"))); // NOI18N
+        imgMenuAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\erick\\Documents\\NetBeansProjects\\AereopuertoOficial\\src\\main\\java\\poo\\areopuerto\\GUI\\resoruces\\menuImage.png")); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BIENVENIDO AL ADMINISTRADOR ");
 
-        btnGestionAreolineas.setBackground(new java.awt.Color(255, 204, 204));
+        btnGestionAreolineas.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnGestionAreolineas.setForeground(new java.awt.Color(51, 102, 153));
         btnGestionAreolineas.setText("GESTIONAR AREOLINEAS");
+        btnGestionAreolineas.addActionListener(this::btnGestionAreolineasActionPerformed);
 
-        btnGestionAviones.setBackground(new java.awt.Color(255, 204, 204));
+        btnGestionAviones.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnGestionAviones.setForeground(new java.awt.Color(51, 102, 153));
         btnGestionAviones.setText("GESTIONAR AVIONES");
         btnGestionAviones.addActionListener(this::btnGestionAvionesActionPerformed);
 
-        btnGestionVuelos.setBackground(new java.awt.Color(255, 204, 204));
+        btnGestionVuelos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnGestionVuelos.setForeground(new java.awt.Color(51, 102, 153));
         btnGestionVuelos.setText("GESTIONAR VUELOS");
         btnGestionVuelos.addActionListener(this::btnGestionVuelosActionPerformed);
 
-        btnGestionAreopuertos.setBackground(new java.awt.Color(255, 204, 204));
+        btnGestionAreopuertos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnGestionAreopuertos.setForeground(new java.awt.Color(51, 102, 153));
         btnGestionAreopuertos.setText("GESTIONAR AREOPUERTOS");
         btnGestionAreopuertos.addActionListener(this::btnGestionAreopuertosActionPerformed);
 
@@ -91,24 +96,19 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(117, 117, 117))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(btnGestionAreolineas, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnGestionVuelos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnGestionAreopuertos, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnGestionAviones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(imgMenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGestionAreopuertos, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnGestionAviones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGestionAreolineas, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnGestionVuelos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(imgMenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
@@ -118,19 +118,19 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(imgMenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addGap(62, 62, 62)
                         .addComponent(btnGestionAreolineas)
-                        .addGap(66, 66, 66)
+                        .addGap(64, 64, 64)
                         .addComponent(btnGestionAviones)
-                        .addGap(67, 67, 67)
+                        .addGap(65, 65, 65)
                         .addComponent(btnGestionVuelos)
-                        .addGap(60, 60, 60)
+                        .addGap(61, 61, 61)
                         .addComponent(btnGestionAreopuertos)
-                        .addContainerGap(63, Short.MAX_VALUE))))
+                        .addContainerGap(65, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(imgMenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         menuArchivo.setText("Archivo");
@@ -162,7 +162,8 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSalirActionPerformed
 
     private void btnGestionAvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAvionesActionPerformed
-        // TODO add your handling code here:
+        GestionAvionesFrame gAvion = new GestionAvionesFrame();
+        gAvion.setVisible(true);
     }//GEN-LAST:event_btnGestionAvionesActionPerformed
 
     private void btnGestionVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionVuelosActionPerformed
@@ -172,6 +173,11 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     private void btnGestionAreopuertosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAreopuertosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGestionAreopuertosActionPerformed
+
+    private void btnGestionAreolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAreolineasActionPerformed
+        GestionAerolíneasFrame gAreolinea = new GestionAerolíneasFrame();
+        gAreolinea.setVisible(true);
+    }//GEN-LAST:event_btnGestionAreolineasActionPerformed
 
     /**
      * @param args the command line arguments
