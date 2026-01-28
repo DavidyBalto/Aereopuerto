@@ -183,13 +183,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Aereopuerto AE = new Aereopuerto("Aere", 2, "Ecuador", "Quito", 2, true);
-        AereopuertoModel A= new AereopuertoModel();
-        Avion A1 = new AvionDeCarga("ABC", "DFG", "HIJG", true, 1234);
-        Avion A2 = new AvionPasajeros("ABC", "DFG", "HIJG", true, 1234);
-        A.agregar(A1.toString(), "avion.txt");
-        A.agregar(A2.toString(), "avion.txt");
-        A.agregar(AE.toString(), "aereopuerto.txt");
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
