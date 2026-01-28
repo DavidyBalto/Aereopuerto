@@ -96,7 +96,10 @@
                               <Component id="btnGestionAreopuertos" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="btnGestionAviones" alignment="1" min="-2" pref="176" max="-2" attributes="0"/>
                               <Component id="btnGestionAreolineas" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnGestionVuelos" alignment="1" min="-2" pref="176" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnGestionVuelos" min="-2" pref="176" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="imgMenuAdmin" min="-2" pref="297" max="-2" attributes="0"/>
@@ -113,9 +116,9 @@
                   <Component id="jLabel1" min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           <Component id="btnGestionAreolineas" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           <Component id="btnGestionAviones" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           <Component id="btnGestionVuelos" min="-2" max="-2" attributes="0"/>

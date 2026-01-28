@@ -106,7 +106,9 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
                             .addComponent(btnGestionAreopuertos, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnGestionAviones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGestionAreolineas, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnGestionVuelos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnGestionVuelos, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(imgMenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -118,9 +120,9 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(61, 61, 61)
                         .addComponent(btnGestionAreolineas)
-                        .addGap(64, 64, 64)
+                        .addGap(65, 65, 65)
                         .addComponent(btnGestionAviones)
                         .addGap(65, 65, 65)
                         .addComponent(btnGestionVuelos)
@@ -183,13 +185,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Aereopuerto AE = new Aereopuerto("Aere", 2, "Ecuador", "Quito", 2, true);
-        AereopuertoModel A= new AereopuertoModel();
-        Avion A1 = new AvionDeCarga("ABC", "DFG", "HIJG", true, 1234);
-        Avion A2 = new AvionPasajeros("ABC", "DFG", "HIJG", true, 1234);
-        A.agregar(A1.toString(), "avion.txt");
-        A.agregar(A2.toString(), "avion.txt");
-        A.agregar(AE.toString(), "aereopuerto.txt");
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
