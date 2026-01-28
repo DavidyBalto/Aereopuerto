@@ -8,3 +8,9 @@ Aereopuerto{nombre=Aere, avionesEn=2, pais=Ecuador, ciudad=Quito, capacidadAvion
 
 Aereopuerto{nombre=Aere, avionesEn=2, pais=Ecuador, ciudad=Quito, capacidadAviones=2, esInternaional=true}
 
+Aereopuerto{nombre=Aere, avionesEn=2, pais=Ecuador, ciudad=Quito, capacidadAviones=2, esInternaional=true}
+
+Aereopuerto{nombre=Aere, avionesEn=2, pais=Ecuador, ciudad=Quito, capacidadAviones=2, esInternaional=true}
+
+Aereopuerto{nombre=Aere, avionesEn=2, pais=Ecuador, ciudad=Quito, capacidadAviones=2, esInternaional=true}
+

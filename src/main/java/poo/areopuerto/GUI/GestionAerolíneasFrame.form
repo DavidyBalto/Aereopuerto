@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jTabbedPane1" min="-2" pref="386" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="66" red="33" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="12" style="1"/>
+        </Property>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JToolBar" name="jToolBar1">
+          <Properties>
+            <Property name="rollover" type="boolean" value="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Registrar Aerol&#xed;neas">
+                <Property name="tabTitle" type="java.lang.String" value="Registrar Aerol&#xed;neas"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="66" red="33" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                      <Component id="txtNombreAreolinea" min="-2" pref="96" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btnGuardarAreolinea" min="-2" pref="115" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                      <Component id="txtCodigoAreolinea" min="-2" pref="97" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="paisOrigenComboBox" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="txtNombreAreolinea" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="paisOrigenComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCodigoAreolinea" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="btnGuardarAreolinea" min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Nombre de la Areol&#xed;nea: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtNombreAreolinea">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Pa&#xed;s de origen:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="paisOrigenComboBox">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="193">
+                        <StringItem index="0" value="Alemania"/>
+                        <StringItem index="1" value="Andorra"/>
+                        <StringItem index="2" value="Angola"/>
+                        <StringItem index="3" value="Antigua y Barbuda"/>
+                        <StringItem index="4" value="Arabia Saudita"/>
+                        <StringItem index="5" value="Argelia"/>
+                        <StringItem index="6" value="Argentina"/>
+                        <StringItem index="7" value="Armenia"/>
+                        <StringItem index="8" value="Australia"/>
+                        <StringItem index="9" value="Austria"/>
+                        <StringItem index="10" value="Azerbaiy&#xe1;n"/>
+                        <StringItem index="11" value="Bahamas"/>
+                        <StringItem index="12" value="Banglad&#xe9;s"/>
+                        <StringItem index="13" value="Barbados"/>
+                        <StringItem index="14" value="Bar&#xe9;in"/>
+                        <StringItem index="15" value="B&#xe9;lgica"/>
+                        <StringItem index="16" value="Belice"/>
+                        <StringItem index="17" value="Ben&#xed;n"/>
+                        <StringItem index="18" value="Bielorrusia"/>
+                        <StringItem index="19" value="Bolivia"/>
+                        <StringItem index="20" value="Bosnia y Herzegovina"/>
+                        <StringItem index="21" value="Botsuana"/>
+                        <StringItem index="22" value="Brasil"/>
+                        <StringItem index="23" value="Brun&#xe9;i"/>
+                        <StringItem index="24" value="Bulgaria"/>
+                        <StringItem index="25" value="Burkina Faso"/>
+                        <StringItem index="26" value="Burundi"/>
+                        <StringItem index="27" value="But&#xe1;n"/>
+                        <StringItem index="28" value="Cabo Verde"/>
+                        <StringItem index="29" value="Camboya"/>
+                        <StringItem index="30" value="Camer&#xfa;n"/>
+                        <StringItem index="31" value="Canad&#xe1;"/>
+                        <StringItem index="32" value="Catar"/>
+                        <StringItem index="33" value="Chad"/>
+                        <StringItem index="34" value="Chile"/>
+                        <StringItem index="35" value="China"/>
+                        <StringItem index="36" value="Chipre"/>
+                        <StringItem index="37" value="Colombia"/>
+                        <StringItem index="38" value="Comoras"/>
+                        <StringItem index="39" value="Corea del Norte"/>
+                        <StringItem index="40" value="Corea del Sur"/>
+                        <StringItem index="41" value="Costa de Marfil"/>
+                        <StringItem index="42" value="Costa Rica"/>
+                        <StringItem index="43" value="Croacia"/>
+                        <StringItem index="44" value="Cuba"/>
+                        <StringItem index="45" value="Dinamarca"/>
+                        <StringItem index="46" value="Dominica"/>
+                        <StringItem index="47" value="Ecuador"/>
+                        <StringItem index="48" value="Egipto"/>
+                        <StringItem index="49" value="El Salvador"/>
+                        <StringItem index="50" value="Emiratos &#xc1;rabes Unidos"/>
+                        <StringItem index="51" value="Eritrea"/>
+                        <StringItem index="52" value="Eslovaquia"/>
+                        <StringItem index="53" value="Eslovenia"/>
+                        <StringItem index="54" value="Espa&#xf1;a"/>
+                        <StringItem index="55" value="Estados Unidos"/>
+                        <StringItem index="56" value="Estonia"/>
+                        <StringItem index="57" value="Etiop&#xed;a"/>
+                        <StringItem index="58" value="Filipinas"/>
+                        <StringItem index="59" value="Finlandia"/>
+                        <StringItem index="60" value="Fiyi"/>
+                        <StringItem index="61" value="Francia"/>
+                        <StringItem index="62" value="Gab&#xf3;n"/>
+                        <StringItem index="63" value="Gambia"/>
+                        <StringItem index="64" value="Georgia"/>
+                        <StringItem index="65" value="Ghana"/>
+                        <StringItem index="66" value="Granada"/>
+                        <StringItem index="67" value="Grecia"/>
+                        <StringItem index="68" value="Guatemala"/>
+                        <StringItem index="69" value="Guinea"/>
+                        <StringItem index="70" value="Guinea-Bis&#xe1;u"/>
+                        <StringItem index="71" value="Guinea Ecuatorial"/>
+                        <StringItem index="72" value="Guyana"/>
+                        <StringItem index="73" value="Hait&#xed;"/>
+                        <StringItem index="74" value="Honduras"/>
+                        <StringItem index="75" value="Hungr&#xed;a"/>
+                        <StringItem index="76" value="India"/>
+                        <StringItem index="77" value="Indonesia"/>
+                        <StringItem index="78" value="Irak"/>
+                        <StringItem index="79" value="Ir&#xe1;n"/>
+                        <StringItem index="80" value="Irlanda"/>
+                        <StringItem index="81" value="Islandia"/>
+                        <StringItem index="82" value="Islas Marshall"/>
+                        <StringItem index="83" value="Islas Salom&#xf3;n"/>
+                        <StringItem index="84" value="Israel"/>
+                        <StringItem index="85" value="Italia"/>
+                        <StringItem index="86" value="Jamaica"/>
+                        <StringItem index="87" value="Jap&#xf3;n"/>
+                        <StringItem index="88" value="Jordania"/>
+                        <StringItem index="89" value="Kazajist&#xe1;n"/>
+                        <StringItem index="90" value="Kenia"/>
+                        <StringItem index="91" value="Kirguist&#xe1;n"/>
+                        <StringItem index="92" value="Kiribati"/>
+                        <StringItem index="93" value="Kosovo"/>
+                        <StringItem index="94" value="Kuwait"/>
+                        <StringItem index="95" value="Laos"/>
+                        <StringItem index="96" value="Lesoto"/>
+                        <StringItem index="97" value="Letonia"/>
+                        <StringItem index="98" value="L&#xed;bano"/>
+                        <StringItem index="99" value="Liberia"/>
+                        <StringItem index="100" value="Libia"/>
+                        <StringItem index="101" value="Liechtenstein"/>
+                        <StringItem index="102" value="Lituania"/>
+                        <StringItem index="103" value="Luxemburgo"/>
+                        <StringItem index="104" value="Macedonia del Norte"/>
+                        <StringItem index="105" value="Madagascar"/>
+                        <StringItem index="106" value="Malasia"/>
+                        <StringItem index="107" value="Malaui"/>
+                        <StringItem index="108" value="Maldivas"/>
+                        <StringItem index="109" value="Mal&#xed;"/>
+                        <StringItem index="110" value="Malta"/>
+                        <StringItem index="111" value="Marruecos"/>
+                        <StringItem index="112" value="Mauricio"/>
+                        <StringItem index="113" value="Mauritania"/>
+                        <StringItem index="114" value="M&#xe9;xico"/>
+                        <StringItem index="115" value="Micronesia"/>
+                        <StringItem index="116" value="Moldavia"/>
+                        <StringItem index="117" value="M&#xf3;naco"/>
+                        <StringItem index="118" value="Mongolia"/>
+                        <StringItem index="119" value="Montenegro"/>
+                        <StringItem index="120" value="Mozambique"/>
+                        <StringItem index="121" value="Myanmar (Birmania)"/>
+                        <StringItem index="122" value="Namibia"/>
+                        <StringItem index="123" value="Nauru"/>
+                        <StringItem index="124" value="Nepal"/>
+                        <StringItem index="125" value="Nicaragua"/>
+                        <StringItem index="126" value="N&#xed;ger"/>
+                        <StringItem index="127" value="Nigeria"/>
+                        <StringItem index="128" value="Noruega"/>
+                        <StringItem index="129" value="Nueva Zelanda"/>
+                        <StringItem index="130" value="Om&#xe1;n"/>
+                        <StringItem index="131" value="Pa&#xed;ses Bajos"/>
+                        <StringItem index="132" value="Pakist&#xe1;n"/>
+                        <StringItem index="133" value="Palaos"/>
+                        <StringItem index="134" value="Palestina"/>
+                        <StringItem index="135" value="Panam&#xe1;"/>
+                        <StringItem index="136" value="Pap&#xfa;a Nueva Guinea"/>
+                        <StringItem index="137" value="Paraguay"/>
+                        <StringItem index="138" value="Per&#xfa;"/>
+                        <StringItem index="139" value="Polonia"/>
+                        <StringItem index="140" value="Portugal"/>
+                        <StringItem index="141" value="Reino Unido"/>
+                        <StringItem index="142" value="Rep&#xfa;blica Centroafricana"/>
+                        <StringItem index="143" value="Rep&#xfa;blica Checa"/>
+                        <StringItem index="144" value="Rep&#xfa;blica del Congo"/>
+                        <StringItem index="145" value="Rep&#xfa;blica Democr&#xe1;tica del Congo"/>
+                        <StringItem index="146" value="Rep&#xfa;blica Dominicana"/>
+                        <StringItem index="147" value="Ruanda"/>
+                        <StringItem index="148" value="Rumania"/>
+                        <StringItem index="149" value="Rusia"/>
+                        <StringItem index="150" value="Samoa"/>
+                        <StringItem index="151" value="San Crist&#xf3;bal y Nieves"/>
+                        <StringItem index="152" value="San Marino"/>
+                        <StringItem index="153" value="San Vicente y las Granadinas"/>
+                        <StringItem index="154" value="Santa Luc&#xed;a"/>
+                        <StringItem index="155" value="Santo Tom&#xe9; y Pr&#xed;ncipe"/>
+                        <StringItem index="156" value="Senegal"/>
+                        <StringItem index="157" value="Serbia"/>
+                        <StringItem index="158" value="Seychelles"/>
+                        <StringItem index="159" value="Sierra Leona"/>
+                        <StringItem index="160" value="Singapur"/>
+                        <StringItem index="161" value="Siria"/>
+                        <StringItem index="162" value="Somalia"/>
+                        <StringItem index="163" value="Sri Lanka"/>
+                        <StringItem index="164" value="Suazilandia (Eswatini)"/>
+                        <StringItem index="165" value="Sud&#xe1;frica"/>
+                        <StringItem index="166" value="Sud&#xe1;n"/>
+                        <StringItem index="167" value="Sud&#xe1;n del Sur"/>
+                        <StringItem index="168" value="Suecia"/>
+                        <StringItem index="169" value="Suiza"/>
+                        <StringItem index="170" value="Surinam"/>
+                        <StringItem index="171" value="Tailandia"/>
+                        <StringItem index="172" value="Tanzania"/>
+                        <StringItem index="173" value="Tayikist&#xe1;n"/>
+                        <StringItem index="174" value="Timor Oriental"/>
+                        <StringItem index="175" value="Togo"/>
+                        <StringItem index="176" value="Tonga"/>
+                        <StringItem index="177" value="Trinidad y Tobago"/>
+                        <StringItem index="178" value="T&#xfa;nez"/>
+                        <StringItem index="179" value="Turkmenist&#xe1;n"/>
+                        <StringItem index="180" value="Turqu&#xed;a"/>
+                        <StringItem index="181" value="Tuvalu"/>
+                        <StringItem index="182" value="Ucrania"/>
+                        <StringItem index="183" value="Uganda"/>
+                        <StringItem index="184" value="Uruguay"/>
+                        <StringItem index="185" value="Uzbekist&#xe1;n"/>
+                        <StringItem index="186" value="Vanuatu"/>
+                        <StringItem index="187" value="Venezuela"/>
+                        <StringItem index="188" value="Vietnam"/>
+                        <StringItem index="189" value="Yemen"/>
+                        <StringItem index="190" value="Yibuti"/>
+                        <StringItem index="191" value="Zambia"/>
+                        <StringItem index="192" value="Zimbabue"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Codigo de la Areolinea"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtCodigoAreolinea">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoAreolineaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnGuardarAreolinea">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="33" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Guardar"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarAreolineaActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JToolBar" name="jToolBar2">
+          <Properties>
+            <Property name="rollover" type="boolean" value="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Editar Aerol&#xed;neas">
+                <Property name="tabTitle" type="java.lang.String" value="Editar Aerol&#xed;neas"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="66" red="33" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="66" red="33" type="rgb"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Listar Aerol&#xed;neas">
+                <Property name="tabTitle" type="java.lang.String" value="Listar Aerol&#xed;neas"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="337" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="185" max="-2" attributes="0"/>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
