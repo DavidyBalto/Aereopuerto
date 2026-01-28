@@ -4,28 +4,45 @@
  */
 package poo.areopuerto;
 
-import java.util.ArrayList;
+
 
 /**
+ * Clase que representa un avión de pasajeros.
+ * Extiende la clase Avion e implementa funcionalidades específicas para transporte de pasajeros.
+ * Gestiona la cantidad de pasajeros y la capacidad máxima.
  *
  * @author David Proaño
  */
 public class AvionPasajeros extends Avion{
     private int cantidadPasajeros=0;
     private int capacidadPasajeros;
-    private ArrayList<String> pasajeros= new ArrayList<>();
+    //private ArrayList<String> pasajeros= new ArrayList<>();
 
+    /**
+     * Constructor que inicializa un avión de pasajeros con sus datos específicos.
+     *
+     * @param placa La placa/matrícula del avión
+     * @param marca La marca del fabricante
+     * @param modelo El modelo específico
+     * @param enVuelo Indica si está en vuelo
+     * @param capacidadPasajeros La cantidad máxima de pasajeros que puede transportar
+     */
     public AvionPasajeros(String placa, String marca, String modelo, boolean enVuelo, int capacidadPasajeros) {
         super(placa, marca, modelo, enVuelo);
         this.capacidadPasajeros = capacidadPasajeros;
     }
     
+    /**
+     * Convierte el avión de pasajeros a formato CSV para persistencia en archivo.
+     *
+     * @return String con los datos del avión de pasajeros
+     */
     @Override
     public String toString() {
-        return "AvionPasajeros{" + "cantidadPasajeros=" + cantidadPasajeros + ", capacidadPasajeros=" + capacidadPasajeros + ", pasajeros=" + pasajeros + '}';
+        return "AvionPasajeros;" + super.toString() + capacidadPasajeros + ";";
     }
     
-    /*getters y setters*/
+    
     public int getCantidadPasajeros() {
         return cantidadPasajeros;
     }
@@ -41,15 +58,4 @@ public class AvionPasajeros extends Avion{
     public void setCapacidadPasajeros(int capacidadPasajeros) {
         this.capacidadPasajeros = capacidadPasajeros;
     }
-
-    public ArrayList<String> getPasajeros() {
-        return pasajeros;
-    }
-
-    public void setPasajeros(ArrayList<String> pasajeros) {
-        this.pasajeros = pasajeros;
-    }
-    
-    
-
 }

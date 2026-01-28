@@ -13,14 +13,14 @@ import poo.areopuerto.controlers.AereopuertoController;
  */
 public class Aereopuerto {
     
+    private int id;
     private String nombre;
     private int avionesEn;
     private String pais;
     private String ciudad;
     private AereopuertoController controlador;
     private int capacidadAviones;
-    private boolean esInternaional;
-    private static int idAereopuerto = 0;   
+    private boolean esInternaional;  
 
 
     public Aereopuerto(String nombre, int avionesEn, String pais, String ciudad, int capacidadAviones, boolean esInternaional) {
@@ -30,15 +30,72 @@ public class Aereopuerto {
         this.ciudad = ciudad;
         this.capacidadAviones = capacidadAviones;
         this.esInternaional = esInternaional;
-        idAereopuerto += 1 ;
+        this.controlador = new AereopuertoController(); // ← Inicializar el controlador
     }   
 
     @Override
     public String toString() {
-        return "Aereopuerto{" + "nombre=" + nombre + ", avionesEn=" + avionesEn + ", pais=" + pais + ", ciudad=" + ciudad + ", capacidadAviones=" + capacidadAviones + ", esInternaional=" + esInternaional + '}';
+        return nombre + ";" + avionesEn + ";" + pais + ";" + ciudad + ";" + capacidadAviones + ";" + esInternaional;
     }
 
-    /*geters y setters*/
+
+    
+
+    public void agregarAvion(Avion a){
+        avionesEn++;
+        controlador.agregarAvion(a);
+    }
+
+    public void eliminarAvion(int id){
+        avionesEn--;
+        controlador.eliminarAvion(id);
+    }
+    
+    // Métodos delegados para vuelos
+    public void agregarVuelo(Vuelo v) {
+        controlador.agregarVuelo(v);
+    }
+    
+    public void eliminarVuelo(int id) {
+        controlador.eliminarVuelo(id);
+    }
+    
+    // Métodos delegados para aero líneas
+    public void agregarAerolinea(Aereolinea a) {
+        controlador.agregarAerolinea(a);
+    }
+    
+    public void eliminarAerolinea(int id) {
+        controlador.eliminarAerolinea(id);
+    }
+    
+    // Métodos para acceder a los datos del controlador
+    public java.util.Map<Integer, Avion> getAviones() {
+        return controlador.getAviones();
+    }
+    
+    public Avion getAvion(int id) {
+        return controlador.getAvion(id);
+    }
+    
+    public java.util.Map<Integer, Vuelo> getVuelos() {
+        return controlador.getVuelos();
+    }
+    
+    public java.util.Map<Integer, Aereolinea> getAerolineas() {
+        return controlador.getAereolineas();
+    }
+
+
+    /*getters y setters*/
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -94,20 +151,7 @@ public class Aereopuerto {
     public void setEsInternaional(boolean esInternaional) {
         this.esInternaional = esInternaional;
     }    
-    
-    public void agregarAvion(Avion a){
-        avionesEn++;
-        controlador.agregarAvion(a);
-    }
-    
-    public void eliminarAvion(Avion a){
-        avionesEn--;
-        controlador.eliminarAvion(a);
-    }
 
-    public static int getIdAereopuerto() {
-        return idAereopuerto;
-    }
 
 
     /*
