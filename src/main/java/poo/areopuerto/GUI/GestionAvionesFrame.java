@@ -6,6 +6,7 @@ package poo.areopuerto.GUI;
 
 import java.awt.HeadlessException;
 import java.util.Map;
+import javax.swing.JFrame;
 import poo.areopuerto.*;
 import poo.areopuerto.controlers.AereopuertoController;
 
@@ -28,6 +29,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         this.aereopuertoActual = aereopuerto;
         initComponents();
         PB.setVisible(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
     
