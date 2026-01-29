@@ -1,2 +1,2 @@
-1;TAME;TM;[]
-2;LATAM;LA;[]
+1;TAME;Ecuador;TM;1
+2;LATAM;Alemania;LA;2

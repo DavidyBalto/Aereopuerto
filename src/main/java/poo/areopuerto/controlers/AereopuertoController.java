@@ -55,6 +55,9 @@ public class AereopuertoController {
         aviones.put(a.getId(), a);
     }
     
+    public void actualizarAereolinea(Aereolinea a){
+        aereolineas.put(a.getId(), a);
+    }
     
     /**
      * Elimina un avión del controlador por su ID.

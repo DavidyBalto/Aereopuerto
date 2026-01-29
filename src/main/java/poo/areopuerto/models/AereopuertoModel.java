@@ -142,7 +142,7 @@ public class AereopuertoModel {
      *
      * @return Map con las aerolíneas cargadas (id, Aereolinea), o null si hay error
      */
-    public Map<Integer, Aereolinea> cargarAerolineas(){
+    public boolean cargarAerolineas(Map<Integer, Aereopuerto> aereopuertos){
         try (BufferedReader br = new BufferedReader(new FileReader(AEROLINEAS_FILE))) {
             String linea;
             Map<Integer, Aereolinea> aerolineas = new HashMap<>();
@@ -150,17 +150,20 @@ public class AereopuertoModel {
                 if (linea.trim().isEmpty()) continue; // Ignorar líneas vacías
                 String[] datos = linea.split(";");
                 int id = Integer.parseInt(datos[0]);
-                Aereolinea aereolinea = new Aereolinea(datos[1], datos[2], datos[3]);
+                Aereolinea aereolinea = new Aereolinea(datos[1], datos[2], datos[3], Integer.parseInt(datos[4]));
                 aereolinea.setId(id);
                 aerolineas.put(id, aereolinea);
             }
-            return aerolineas;
+            for (Aereolinea a : aerolineas.values()) {
+                aereopuertos.get(a.getAereopuertoId()).agregarAerolinea(a);
+            }
+            return true;
         } catch (FileNotFoundException ex) {
             System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } catch (IOException ex) {
             System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-        return null;
+        return false;
     }
     
     /**

@@ -32,6 +32,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         aereopuertos=modelo.cargarAereopuertos();
         modelo.cargarAviones(aereopuertos);
         modelo.cargarVuelos(aereopuertos);
+        modelo.cargarAerolineas(aereopuertos);
         //Se asume que debe existir al menos un aereopuerto ya cargado en el sistema
         controladorAct=aereopuertos.get(1).getControlador(); //Se supone que estamos administrando el aereopuerto 1
         initComponents();
@@ -189,7 +190,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
 
     private void btnGestionAreolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAreolineasActionPerformed
 
-        GestionAerolíneasFrame gAreolinea = new GestionAerolíneasFrame();
+        GestionAerolíneasFrame gAreolinea = new GestionAerolíneasFrame(controladorAct, aereopuertos.get(1).getId());
         gAreolinea.setVisible(true);
     }//GEN-LAST:event_btnGestionAreolineasActionPerformed
 

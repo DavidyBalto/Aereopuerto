@@ -4,8 +4,11 @@
  */
 package poo.areopuerto.GUI;
 
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import poo.areopuerto.*;
+import poo.areopuerto.controlers.AereopuertoController;
 
 /**
  *
@@ -14,10 +17,22 @@ import javax.swing.JOptionPane;
 public class GestionAerolíneasFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GestionAerolíneasFrame.class.getName());
-
+    
+    private AereopuertoController controlador;
+    private int aereopuertoId=0;
+    private Aereolinea aereolineaHelper;
     /**
      * Creates new form GestionAreolineasFrame
+     * @param controlador
+     * @param id
      */
+    public GestionAerolíneasFrame(AereopuertoController controlador, int id) {
+        this.controlador = controlador;
+        this.aereopuertoId=id;
+        initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
     public GestionAerolíneasFrame() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -61,10 +76,16 @@ public class GestionAerolíneasFrame extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(51, 102, 153));
         jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListarAereolineas(evt);
+            }
+        });
 
         jToolBar1.setRollover(true);
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 153));
+        jPanel1.setFocusable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,6 +106,11 @@ public class GestionAerolíneasFrame extends javax.swing.JFrame {
         btnGuardarAreolinea.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnGuardarAreolinea.setForeground(new java.awt.Color(51, 102, 153));
         btnGuardarAreolinea.setText("Guardar");
+        btnGuardarAreolinea.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GuardarAereolinea(evt);
+            }
+        });
         btnGuardarAreolinea.addActionListener(this::btnGuardarAreolineaActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -92,7 +118,7 @@ public class GestionAerolíneasFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,12 +172,17 @@ public class GestionAerolíneasFrame extends javax.swing.JFrame {
         jToolBar2.setRollover(true);
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 153));
+        jPanel2.setFocusable(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Buscar Por Codigo de Areolinea:");
-        jPanel2.add(jLabel4, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.weighty = 0.1;
+        jPanel2.add(jLabel4, gridBagConstraints);
+
+        txtBuscarCodigoAreolinea.setPreferredSize(new java.awt.Dimension(70, 22));
         jPanel2.add(txtBuscarCodigoAreolinea, new java.awt.GridBagConstraints());
 
         btnActualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -164,11 +195,14 @@ public class GestionAerolíneasFrame extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.weighty = 0.2;
         jPanel2.add(btnActualizar, gridBagConstraints);
+
+        txtNombreEditar.setPreferredSize(new java.awt.Dimension(80, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.weighty = 0.05;
         jPanel2.add(txtNombreEditar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -181,6 +215,7 @@ public class GestionAerolíneasFrame extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.weighty = 0.05;
         jPanel2.add(cmbPaisEditar, gridBagConstraints);
 
         btnBuscarAreolinea1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -198,9 +233,11 @@ public class GestionAerolíneasFrame extends javax.swing.JFrame {
         jTabbedPane1.addTab("Editar Aerolíneas", jToolBar2);
 
         jPanel3.setBackground(new java.awt.Color(51, 102, 153));
+        jPanel3.setFocusable(false);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setFocusable(false);
         jScrollPane2.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -243,36 +280,84 @@ public class GestionAerolíneasFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoAreolineaActionPerformed
 
     private void btnGuardarAreolineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAreolineaActionPerformed
-       btnGuardarAreolinea.addActionListener(e -> {
-    String nombre = txtNombreAreolinea.getText();
-    String pais = paisOrigenComboBox.getSelectedItem().toString();
-    String codigo = txtCodigoAreolinea.getText();
 
-    // Aquí llamas al codigo y su arraylist
-    
-
-    JOptionPane.showMessageDialog(this, "Aerolínea registrada");
-});
     }//GEN-LAST:event_btnGuardarAreolineaActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        
+        //trim para evitar chistes de que pogann espacios
+        String newNombre=txtNombreEditar.getText().trim();
+        if(aereolineaHelper==null)return;
+        if(newNombre!=null ){
+            aereolineaHelper.setNombre(newNombre);
+        }
+        String newPais = cmbPaisEditar.getSelectedItem().toString();
+        if(newPais!=null ){
+            aereolineaHelper.setPaisOrigen(newPais);
+        } 
+        controlador.actualizarAereolinea(aereolineaHelper);
+        JOptionPane.showMessageDialog(null, "Aereolinea actualizada", "Éxito en la Operación", JOptionPane.INFORMATION_MESSAGE);
+        
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBuscarAreolinea1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAreolinea1ActionPerformed
         //btnBuscarAreolinea1.addActionListener(e -> {
-    //Aerolinea a = controladorAerolinea.buscarPorCodigo(txtBuscarCodigo.getText());
-
-    //if (a != null) {
-       // txtNombreEditar.setText(a.getNombre());
-        //cmbPaisEditar.setSelectedItem(a.getPais());
+        String idS = txtBuscarCodigoAreolinea.getText();
+        int idInt;
+        try {
+            idInt=Integer.parseInt(idS);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El valor del id debe ser un numero", "Atención", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        aereolineaHelper = controlador.getAereolineas().get(idInt);
         
-    //} else {
-      //  JOptionPane.showMessageDialog(this, "No encontrada");
-    //}
-//});
+        
+    if (aereolineaHelper != null) {
+       txtNombreEditar.setText(aereolineaHelper.getNombre());
+        cmbPaisEditar.setSelectedItem(aereolineaHelper.getPaisOrigen());
+    } else {
+       JOptionPane.showMessageDialog(null, "Aereolinea no encontrada", "Busqueda en Blanco", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     }//GEN-LAST:event_btnBuscarAreolinea1ActionPerformed
 
+    private void ListarAereolineas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListarAereolineas
+        int menuSeleccionado=jTabbedPane1.getSelectedIndex();
+        //if(menuSeleccionado==1)PB.setVisible(false);
+        if(menuSeleccionado==2){
+            jTextArea1.setText("Id Nomrbre Codigo IdAereopuerto \n");
+            for (Map.Entry<Integer, Aereolinea> entry : controlador.getAereolineas().entrySet()) {
+                jTextArea1.append("[" + entry.getKey() + "] " + entry.getValue()+"\n");
+            }
+        }
+    }//GEN-LAST:event_ListarAereolineas
+
+    private void GuardarAereolinea(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarAereolinea
+
+        String nombre = txtNombreAreolinea.getText();
+        String pais = paisOrigenComboBox.getSelectedItem().toString();
+        String codigo = txtCodigoAreolinea.getText();
+        
+        if(nombre==null || pais==null || codigo==null){
+            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
+            return;
+        }
+
+
+        Aereolinea a=new Aereolinea(nombre, pais, codigo,aereopuertoId);
+        controlador.agregarAerolinea(a);
+        
+    // Aquí llamas al codigo y su arraylist
+    
+
+    JOptionPane.showMessageDialog(this, "Aerolínea registrada");
+    }//GEN-LAST:event_GuardarAereolinea
+
+    
+    
+    
     /**
      * @param args the command line arguments
      */

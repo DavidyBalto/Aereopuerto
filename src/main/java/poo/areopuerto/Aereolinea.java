@@ -13,10 +13,13 @@ package poo.areopuerto;
  * @author David Proaño
  */
 public class Aereolinea {
+    //Deberia haber 2 llaves la id de la aereolinea y la del aereopuerto
+    // no se como explicarlo sin usar terminos de sql
     private int id;
     private String nombre;
     private String paisOrigen;
     private String codigo;
+    private int aereopuertoId;
 
     /**
      * Constructor principal que inicializa una aerolínea con todos sus datos.
@@ -24,11 +27,13 @@ public class Aereolinea {
      * @param nombre El nombre de la aerolínea (ej: "TAME", "LATAM")
      * @param paisOrigen El país de origen/registro de la aerolínea (ej: "Ecuador", "Chile")
      * @param codigo El código IATA de 2 letras (ej: "LA", "TA")
+     * @param aereopuertoId El ID del aeropuerto donde se encuentra la aerolínea
      */
-    public Aereolinea(String nombre, String paisOrigen, String codigo) {
+    public Aereolinea(String nombre, String paisOrigen, String codigo, int aereopuertoId) {
         this.nombre = nombre;
         this.paisOrigen = paisOrigen;
         this.codigo = codigo;
+        this.aereopuertoId = aereopuertoId;
     }
 
     /**
@@ -38,11 +43,13 @@ public class Aereolinea {
      *
      * @param nombre El nombre de la aerolínea
      * @param codigo El código de la aerolínea
+     * @param aereopuertoId id del aereopuerto que se gestiona al momento
      */
-    public Aereolinea(String nombre, String codigo) {
+    public Aereolinea(String nombre, String codigo,int aereopuertoId) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.paisOrigen = "Desconocido";
+        this.aereopuertoId = aereopuertoId;
     }
 
     /**
@@ -53,7 +60,7 @@ public class Aereolinea {
      */
     @Override
     public String toString() {
-        return nombre + ";" + paisOrigen + ";" + codigo;
+        return nombre + ";" + paisOrigen + ";" + codigo+ ";" + aereopuertoId + ";";
     }
 
     public int getId() {
@@ -87,4 +94,14 @@ public class Aereolinea {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
+    public int getAereopuertoId() {
+        return aereopuertoId;
+    }
+
+    public void setAereopuertoId(int aereopuertoId) {
+        this.aereopuertoId = aereopuertoId;
+    }
+
+
 }
