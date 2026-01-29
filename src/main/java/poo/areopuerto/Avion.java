@@ -16,8 +16,8 @@ public abstract class Avion {
     private String marca;
     private String modelo;
     private int id;
-    //Esto es redundante, ya que el avion pertenece al aereopuertoController y no el aereopuerto al Avion
-    //private Aereopuerto aereopuertoU;
+    private int aereopuertoId;
+
     private boolean enVuelo;
 
     /**
@@ -26,26 +26,28 @@ public abstract class Avion {
      * @param placa La placa/matrícula única del avión
      * @param marca La marca del fabricante (ej: "Boeing", "Airbus")
      * @param modelo El modelo específico del avión (ej: "747", "A380")
+     * @param aereopuerto El aeropuerto donde se encuentra el avión
      * @param enVuelo Indica si el avión está actualmente en vuelo
      */
-    public Avion(String placa, String marca, String modelo,/* Aereopuerto aereopuertoU,*/ boolean enVuelo) {
+    public Avion(String placa, String marca, String modelo, int aereopuerto, boolean enVuelo) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
-        //this.aereopuertoU = aereopuertoU;
+        this.aereopuertoId = aereopuerto;
         this.enVuelo = enVuelo;
     }
 
     /**
      * Convierte el avión a formato CSV para persistencia en archivo.
-     * El formato es: placa;marca;modelo;enVuelo;
+     * El formato es: placa;marca;modelo;aereopuertoId;enVuelo;
      *
      * @return String con los datos del avión separados por punto y coma
      */
     @Override
     public String toString() {
-        return placa + ";" + marca + ";" + modelo + ";" + enVuelo + ";";
+        return placa + ";" + marca + ";" + modelo + ";" + aereopuertoId + ";" + enVuelo + ";";
     }
+
 
 
     public String getPlaca() {
@@ -80,6 +82,14 @@ public abstract class Avion {
         this.enVuelo = enVuelo;
     }
     
+    public int getAereopuertoId() {
+        return aereopuertoId;
+    }
+
+    public void setAereopuertoId(int aereopuertoId) {
+        this.aereopuertoId = aereopuertoId;
+    }
+
     public int getId() {
         return id;
     }

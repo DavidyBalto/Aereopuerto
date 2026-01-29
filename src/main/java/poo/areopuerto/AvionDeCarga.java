@@ -25,11 +25,12 @@ public class AvionDeCarga extends Avion{
      * @param placa La placa/matrícula del avión
      * @param marca La marca del fabricante
      * @param modelo El modelo específico
+     * @param aereopuerto El aeropuerto donde se encuentra el avión
      * @param enVuelo Indica si está en vuelo
      * @param pesoMaximo El peso máximo que puede transportar en kilogramos
      */
-    public AvionDeCarga(String placa, String marca, String modelo, boolean enVuelo,  int pesoMaximo) {
-        super(placa, marca, modelo, enVuelo);
+    public AvionDeCarga(String placa, String marca, String modelo, int aereopuerto, boolean enVuelo, int pesoMaximo) {
+        super(placa, marca, modelo, aereopuerto, enVuelo);
         this.pesoMaximo = pesoMaximo;
     }
 
@@ -52,6 +53,9 @@ public class AvionDeCarga extends Avion{
     public String toString() {
         return "AvionDeCarga;" + super.toString() + pesoMaximo + ";";
     }
+
+
+
 
     /**
      * Proporciona información legible del avión de carga con todos sus detalles.

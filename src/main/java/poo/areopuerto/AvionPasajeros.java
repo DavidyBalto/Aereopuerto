@@ -24,11 +24,12 @@ public class AvionPasajeros extends Avion{
      * @param placa La placa/matrícula del avión
      * @param marca La marca del fabricante
      * @param modelo El modelo específico
+     * @param aereopuerto El aeropuerto donde se encuentra el avión
      * @param enVuelo Indica si está en vuelo
      * @param capacidadPasajeros La cantidad máxima de pasajeros que puede transportar
      */
-    public AvionPasajeros(String placa, String marca, String modelo, boolean enVuelo, int capacidadPasajeros) {
-        super(placa, marca, modelo, enVuelo);
+    public AvionPasajeros(String placa, String marca, String modelo, int aereopuerto, boolean enVuelo, int capacidadPasajeros) {
+        super(placa, marca, modelo, aereopuerto, enVuelo);
         this.capacidadPasajeros = capacidadPasajeros;
     }
     
@@ -41,6 +42,7 @@ public class AvionPasajeros extends Avion{
     public String toString() {
         return "AvionPasajeros;" + super.toString() + capacidadPasajeros + ";";
     }
+
     
     
     public int getCantidadPasajeros() {

@@ -4,6 +4,11 @@
  */
 package poo.areopuerto.GUI;
 
+import java.awt.HeadlessException;
+import java.util.Map;
+import poo.areopuerto.*;
+import poo.areopuerto.controlers.AereopuertoController;
+
 
 
 /**
@@ -14,12 +19,24 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GestionAvionesFrame.class.getName());
 
+    private AereopuertoController controlador;
+    private Aereopuerto aereopuertoActual;
+    private Avion a; //Clase avion que facilita la busqueda y actualizacion de los aviones
+    
+    public GestionAvionesFrame(AereopuertoController controlador, Aereopuerto aereopuerto) throws HeadlessException {
+        this.controlador = controlador;
+        this.aereopuertoActual = aereopuerto;
+        initComponents();
+        PB.setVisible(false);
+    }
+    
+    
     /**
      * Creates new form GestionAvionesFrame
      */
     public GestionAvionesFrame() {
+        PB.setVisible(false);
         initComponents();
-        
     }
 
     /**
@@ -33,7 +50,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
 
         jLabel4 = new javax.swing.JLabel();
         txtPlacaAvion1 = new javax.swing.JTextField();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        MenuAviones = new javax.swing.JTabbedPane();
         jToolBar1 = new javax.swing.JToolBar();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jToolBar3 = new javax.swing.JToolBar();
@@ -63,9 +80,19 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         txtBuscarAvion = new javax.swing.JTextField();
         btnBuscarAvion = new javax.swing.JButton();
+        PB = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtVariable = new javax.swing.JLabel();
+        variableField = new javax.swing.JTextField();
+        modeloField = new javax.swing.JTextField();
+        marcaField = new javax.swing.JTextField();
+        placaField = new javax.swing.JTextField();
+        Actualizar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ListaAviones = new javax.swing.JTextArea();
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,9 +100,14 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(51, 102, 153));
-        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        MenuAviones.setBackground(new java.awt.Color(51, 102, 153));
+        MenuAviones.setForeground(new java.awt.Color(255, 255, 255));
+        MenuAviones.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        MenuAviones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListaAviones(evt);
+            }
+        });
 
         jToolBar1.setRollover(true);
 
@@ -246,7 +278,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
 
         jToolBar1.add(jTabbedPane2);
 
-        jTabbedPane1.addTab("Registrar Aviones", jToolBar1);
+        MenuAviones.addTab("Registrar Aviones", jToolBar1);
 
         jToolBar2.setRollover(true);
 
@@ -255,25 +287,97 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Porfavor introduzca la placa de la aeronave: ");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 20));
-        jPanel2.add(txtBuscarAvion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
+        jLabel22.setText("Porfavor introduzca la id de la aeronave: ");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 20));
+        jPanel2.add(txtBuscarAvion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 80, -1));
 
         btnBuscarAvion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarAvion.setForeground(new java.awt.Color(51, 102, 153));
         btnBuscarAvion.setText("Buscar");
         btnBuscarAvion.addActionListener(this::btnBuscarAvionActionPerformed);
-        jPanel2.add(btnBuscarAvion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
+        jPanel2.add(btnBuscarAvion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+
+        PB.setFocusable(false);
+
+        jLabel1.setText("Placa");
+
+        jLabel2.setText("Marca");
+
+        jLabel3.setText("Modelo");
+
+        txtVariable.setText("Carga");
+
+        Actualizar.setText("Actualizar");
+        Actualizar.addActionListener(this::ActualizarActionPerformed);
+
+        javax.swing.GroupLayout PBLayout = new javax.swing.GroupLayout(PB);
+        PB.setLayout(PBLayout);
+        PBLayout.setHorizontalGroup(
+            PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PBLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PBLayout.createSequentialGroup()
+                        .addComponent(txtVariable)
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PBLayout.createSequentialGroup()
+                        .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)))
+                .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PBLayout.createSequentialGroup()
+                        .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(marcaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(modeloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Actualizar))
+                    .addGroup(PBLayout.createSequentialGroup()
+                        .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(placaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(variableField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        PBLayout.setVerticalGroup(
+            PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PBLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(placaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PBLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(marcaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(modeloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PBLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(Actualizar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(variableField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVariable))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(PB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 240, 160));
 
         jToolBar2.add(jPanel2);
 
-        jTabbedPane1.addTab("Editar Aviones", jToolBar2);
+        MenuAviones.addTab("Editar Aviones", jToolBar2);
 
         jPanel3.setBackground(new java.awt.Color(51, 102, 153));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        ListaAviones.setColumns(20);
+        ListaAviones.setRows(5);
+        jScrollPane1.setViewportView(ListaAviones);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -292,33 +396,102 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Listar Aviones", jPanel3);
+        MenuAviones.addTab("Listar Aviones", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(MenuAviones, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(MenuAviones)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarAvionCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAvionCargaActionPerformed
-
+        String placa = txtPlacaCarga.getText();
+        String modelo = txtModeloCarga.getText();
+        String marca = txtMarcaCarga.getText();
+        String pesoMax= txtCapacidadCarga.getText();
+        
+        int peso;
+        
+        try {
+            peso=Integer.parseInt(pesoMax);
+        }catch(Exception e) {
+            System.out.println("Error en el peso debe ser entero positivo");
+            return;
+        }
+ 
+        Avion a = new AvionDeCarga(placa, marca, modelo, aereopuertoActual.getId(), false, peso);
+        controlador.agregarAvion(a);
+        Notificador.info("Avion de carga Creado Correctamente");
     }//GEN-LAST:event_btnGuardarAvionCargaActionPerformed
 
     private void btnGuardarAvionPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAvionPasajerosActionPerformed
-        // TODO add your handling code here:
+        String placa = txtPlacaPasajeros.getText();
+        String marca = txtMarcaPasajeros.getText();
+        String modelo = txtModeloPasajeros.getText();
+        String capMax= txtCapacidadPasajeros.getText();
+
+        int cap;
+        try {
+            cap=Integer.parseInt(capMax);
+        }catch(Exception e) {
+            System.out.println("Error en el peso debe ser entero positivo");
+            return;
+        }
+        Avion a = new AvionPasajeros(placa, marca, modelo, aereopuertoActual.getId(), false, cap);
+        controlador.agregarAvion(a);
+        
+        Notificador.info("Avion de pasajeros Creado Correctamente");
+        
+
     }//GEN-LAST:event_btnGuardarAvionPasajerosActionPerformed
 
     private void btnBuscarAvionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAvionActionPerformed
-        // TODO add your handling code here:
+        String idBusqueda = txtBuscarAvion.getText();
+        int idInt;
+        try {
+            idInt=Integer.parseInt(idBusqueda);
+        } catch (Exception e) {
+            Notificador.info("No existe un avion con ese id");
+            return;
+        }
+        a=controlador.getAvion(idInt);
+        if(a==null) return;
+        PB.setVisible(true);
+        placaField.setText(a.getMarca());
+        marcaField.setText(a.getMarca());
+        modeloField.setText(a.getModelo());
+        variableField.setText(a.getClass().toString());
     }//GEN-LAST:event_btnBuscarAvionActionPerformed
+
+    private void ListaAviones(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaAviones
+        int menuSeleccionado=MenuAviones.getSelectedIndex();
+        System.out.println(menuSeleccionado);
+        if(menuSeleccionado==1)PB.setVisible(false);
+        if(menuSeleccionado==2){
+            for (Map.Entry<Integer, Avion> entry : controlador.getAviones().entrySet()) {
+                ListaAviones.append("[" + entry.getKey() + "] " + entry.getValue());
+            }
+            PB.setVisible(false);
+        }
+    }//GEN-LAST:event_ListaAviones
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        String placa = placaField.getText();
+        String marca =marcaField.getText();
+        String modelo=modeloField.getText();
+        String variable=variableField.getText();
+        
+        
+        
+    }//GEN-LAST:event_ActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,37 +513,44 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new GestionAvionesFrame().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
+    private javax.swing.JTextArea ListaAviones;
+    private javax.swing.JTabbedPane MenuAviones;
+    private javax.swing.JPanel PB;
     private javax.swing.JButton btnBuscarAvion;
     private javax.swing.JButton btnGuardarAvionCarga;
     private javax.swing.JButton btnGuardarAvionPasajeros;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
     private javax.swing.JToolBar jToolBar4;
+    private javax.swing.JTextField marcaField;
+    private javax.swing.JTextField modeloField;
+    private javax.swing.JTextField placaField;
     javax.swing.JTextField txtBuscarAvion;
     private javax.swing.JTextField txtCapacidadCarga;
     private javax.swing.JTextField txtCapacidadPasajeros;
@@ -381,5 +561,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtPlacaAvion1;
     private javax.swing.JTextField txtPlacaCarga;
     private javax.swing.JTextField txtPlacaPasajeros;
+    private javax.swing.JLabel txtVariable;
+    private javax.swing.JTextField variableField;
     // End of variables declaration//GEN-END:variables
 }

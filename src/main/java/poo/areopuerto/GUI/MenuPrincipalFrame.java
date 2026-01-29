@@ -4,10 +4,11 @@
  */
 package poo.areopuerto.GUI;
 
+import java.util.HashMap;
+import java.util.Map;
 import poo.areopuerto.Aereopuerto;
-import poo.areopuerto.Avion;
-import poo.areopuerto.AvionDeCarga;
-import poo.areopuerto.AvionPasajeros;
+import poo.areopuerto.*;
+import poo.areopuerto.controlers.AereopuertoController;
 import poo.areopuerto.models.AereopuertoModel;
 
 /**
@@ -17,13 +18,23 @@ import poo.areopuerto.models.AereopuertoModel;
 public class MenuPrincipalFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuPrincipalFrame.class.getName());
+    private final AereopuertoModel modelo;
+    private Map<Integer,Aereopuerto> aereopuertos;
+    private AereopuertoController controladorAct;
 
     /**
      * Creates new form MainFrame
      */
     public MenuPrincipalFrame() {
+        //Mejoras usar un aereopuerto act ya que este incluye su controlador
+        aereopuertos= new HashMap<>();
+        modelo= new AereopuertoModel();
+        aereopuertos=modelo.cargarAereopuertos();
+        modelo.cargarAviones(aereopuertos);
+        modelo.cargarVuelos(aereopuertos);
+        //Se asume que debe existir al menos un aereopuerto ya cargado en el sistema
+        controladorAct=aereopuertos.get(1).getControlador(); //Se supone que estamos administrando el aereopuerto 1
         initComponents();
-    
     }
 
 
@@ -164,7 +175,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSalirActionPerformed
 
     private void btnGestionAvionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAvionesActionPerformed
-        GestionAvionesFrame gAvion = new GestionAvionesFrame();
+        GestionAvionesFrame gAvion = new GestionAvionesFrame(controladorAct, aereopuertos.get(1));
         gAvion.setVisible(true);
     }//GEN-LAST:event_btnGestionAvionesActionPerformed
 
@@ -177,6 +188,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionAreopuertosActionPerformed
 
     private void btnGestionAreolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAreolineasActionPerformed
+
         GestionAerolíneasFrame gAreolinea = new GestionAerolíneasFrame();
         gAreolinea.setVisible(true);
     }//GEN-LAST:event_btnGestionAreolineasActionPerformed

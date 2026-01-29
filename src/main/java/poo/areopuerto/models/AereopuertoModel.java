@@ -83,7 +83,7 @@ public class AereopuertoModel {
      *
      * @return Map con los aviones cargados (id, Avion), o null si hay error
      */
-    public Map<Integer, Avion> cargarAviones(){
+    public boolean cargarAviones(Map<Integer, Aereopuerto> aereopuertos){
         try (BufferedReader br = new BufferedReader(new FileReader(AVIONES_FILE))) {
             String linea;
             Map<Integer, Avion> aviones = new HashMap<>();
@@ -91,22 +91,30 @@ public class AereopuertoModel {
                 if (linea.trim().isEmpty()) continue; // Ignorar líneas vacías
                 String[] datos = linea.split(";");
                 int id = Integer.parseInt(datos[0]);
+                int aereopuertoId = Integer.parseInt(datos[5]);
+                int aereopuerto = aereopuertos.get(aereopuertoId).getId();
+                
                 if(datos[1].equals("AvionDeCarga")){
-                    AvionDeCarga avion = new AvionDeCarga(datos[2], datos[3], datos[4], Boolean.parseBoolean(datos[5]), Integer.parseInt(datos[6]));
+                    AvionDeCarga avion = new AvionDeCarga(datos[2], datos[3], datos[4], aereopuerto, Boolean.parseBoolean(datos[6]), Integer.parseInt(datos[7]));
                     aviones.put(id, avion);
                 }
                 if(datos[1].equals("AvionPasajeros")){
-                    AvionPasajeros avion = new AvionPasajeros(datos[2], datos[3], datos[4], Boolean.parseBoolean(datos[5]), Integer.parseInt(datos[6]));
+                    AvionPasajeros avion = new AvionPasajeros(datos[2], datos[3], datos[4], aereopuerto, Boolean.parseBoolean(datos[6]), Integer.parseInt(datos[7]));
                     aviones.put(id, avion);
                 }
             }
-            return aviones;
+            for (Avion a : aviones.values()) {
+                aereopuertos.get(a.getAereopuertoId()).agregarAvion(a);
+            }
+
+
+
         } catch (FileNotFoundException ex) {
             System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } catch (IOException ex) {
             System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-        return null;
+        return false;
     }
     
     /**
@@ -217,7 +225,7 @@ public class AereopuertoModel {
     
     /**
      * Carga todos los vuelos desde el archivo usando el cache de aeropuertos.
-     * Método alternativo que proporciona compatibilidad hacia atrás (backward compatibility).
+     * Método alternativo que proporciona una segunda opcion de carga hacia atrás.
      * Si no hay cache, carga los aeropuertos primero y luego los vuelos.
      *
      * @return Map con los vuelos cargados (id, Vuelo), o null si hay error
@@ -232,20 +240,98 @@ public class AereopuertoModel {
     }
     
     /**
-     * Guarda todos los vuelos en el archivo de persistencia.
-     * Escribe cada vuelo en formato CSV con su ID como prefijo.
+     * Guarda todos los vuelos en el archivo de persistencia evitando duplicados.
+     * Actualiza vuelos existentes si han sido modificados y agrega nuevos.
+     * Cambina vuelos existentes con los nuevos, dando prioridad a los nuevos (sobrescriben).
      *
      * @param vuelos Map de vuelos a guardar (id, Vuelo)
      */
     public void escribirVuelos(Map<Integer, Vuelo> vuelos){
         try{
-            BufferedWriter br = new BufferedWriter(new FileWriter(VUELOS_FILE));
-            for (Map.Entry<Integer, Vuelo> entry : vuelos.entrySet()) {
-                br.write(entry.getKey() + ";" + entry.getValue().toString()+"\n");
+            // Cargar vuelos existentes del archivo
+            Map<Integer, String> vuelosExistentes = new HashMap<>();
+            try (BufferedReader br = new BufferedReader(new FileReader(VUELOS_FILE))) {
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    if (linea.trim().isEmpty()) continue;
+                    String[] datos = linea.split(";");
+                    int id = Integer.parseInt(datos[0]);
+                    vuelosExistentes.put(id, linea);
+                }
+            } catch (FileNotFoundException ex) {
+                // El archivo no existe, continuamos sin vuelos existentes
             }
-            br.close();
+            
+            // Crear mapa combinado: existentes + nuevos (nuevos sobrescriben)
+            Map<Integer, String> vuelosCombinados = new HashMap<>(vuelosExistentes);
+            
+            // Agregar o actualizar con los nuevos vuelos
+            for (Map.Entry<Integer, Vuelo> entry : vuelos.entrySet()) {
+                String nuevoVuelo = entry.getKey() + ";" + entry.getValue().toString();
+                vuelosCombinados.put(entry.getKey(), nuevoVuelo);
+            }
+            
+            // Escribir todos los vuelos (combinados, sin duplicados, con actualizaciones)
+            BufferedWriter bw = new BufferedWriter(new FileWriter(VUELOS_FILE));
+            for (String linea : vuelosCombinados.values()) {
+                bw.write(linea + "\n");
+            }
+            bw.close();
         } catch (IOException ex) {
             System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
+    }
+    
+    /**
+     * Verifica si un vuelo con el ID especificado ya existe en el archivo.
+     * Útil para evitar duplicados al escribir vuelos desde múltiples aeropuertos.
+     *
+     * @param idVuelo El ID del vuelo a buscar
+     * @return true si el vuelo ya existe, false en caso contrario
+     */
+    public boolean vueloExiste(int idVuelo){
+        try (BufferedReader br = new BufferedReader(new FileReader(VUELOS_FILE))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (linea.trim().isEmpty()) continue;
+                String[] datos = linea.split(";");
+                int id = Integer.parseInt(datos[0]);
+                if (id == idVuelo) {
+                    return true;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            // El archivo no existe, significa que no hay vuelos
+            return false;
+        } catch (IOException ex) {
+            System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return false;
+    }
+    
+    /**
+     * Verifica si un vuelo con el código especificado ya existe en el archivo.
+     * Útil para evitar duplicados al escribir vuelos desde múltiples aeropuertos.
+     *
+     * @param codigoVuelo El código del vuelo a buscar (ej: "QUI-GYE-001")
+     * @return true si el vuelo ya existe, false en caso contrario
+     */
+    public boolean vueloExistePorCodigo(String codigoVuelo){
+        try (BufferedReader br = new BufferedReader(new FileReader(VUELOS_FILE))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (linea.trim().isEmpty()) continue;
+                String[] datos = linea.split(";");
+                if (datos.length > 1 && datos[1].equals(codigoVuelo)) {
+                    return true;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            // El archivo no existe, significa que no hay vuelos
+            return false;
+        } catch (IOException ex) {
+            System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return false;
     }
 }
