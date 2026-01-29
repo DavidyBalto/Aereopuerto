@@ -76,8 +76,6 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(51, 102, 153));
 
-        imgMenuAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\erick\\Documents\\NetBeansProjects\\AereopuertoOficial\\src\\main\\java\\poo\\areopuerto\\GUI\\resoruces\\menuImage.png")); // NOI18N
-
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BIENVENIDO AL ADMINISTRADOR ");
@@ -131,18 +129,18 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(61, 61, 61)
                         .addComponent(btnGestionAreolineas)
-                        .addGap(64, 64, 64)
+                        .addGap(65, 65, 65)
                         .addComponent(btnGestionAviones)
                         .addGap(65, 65, 65)
                         .addComponent(btnGestionVuelos)
                         .addGap(61, 61, 61)
                         .addComponent(btnGestionAreopuertos)
-                        .addContainerGap(65, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imgMenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(imgMenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
@@ -180,11 +178,13 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionAvionesActionPerformed
 
     private void btnGestionVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionVuelosActionPerformed
-        // TODO add your handling code here:
+        GesrtionarVuelosFrame gVuelos = new GesrtionarVuelosFrame();
+        gVuelos.setVisible(true);
     }//GEN-LAST:event_btnGestionVuelosActionPerformed
 
     private void btnGestionAreopuertosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAreopuertosActionPerformed
-        // TODO add your handling code here:
+        GestionarAeropuertosFrame gAreopuertos = new GestionarAeropuertosFrame();
+        gAreopuertos.setVisible(true);
     }//GEN-LAST:event_btnGestionAreopuertosActionPerformed
 
     private void btnGestionAreolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAreolineasActionPerformed

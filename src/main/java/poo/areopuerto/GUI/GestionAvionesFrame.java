@@ -37,6 +37,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
     public GestionAvionesFrame() {
         PB.setVisible(false);
         initComponents();
+        
     }
 
     /**
@@ -565,3 +566,4 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
     private javax.swing.JTextField variableField;
     // End of variables declaration//GEN-END:variables
 }
+
