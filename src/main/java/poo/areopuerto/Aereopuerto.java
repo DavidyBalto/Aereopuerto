@@ -45,6 +45,8 @@ public class Aereopuerto {
         avionesEn++;
         controlador.agregarAvion(a);
     }
+    
+
 
     public void eliminarAvion(int id){
         avionesEn--;

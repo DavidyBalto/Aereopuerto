@@ -265,6 +265,7 @@ public class AereopuertoModel {
      */
     public void escribirVuelos(Map<Integer, Vuelo> vuelos){
         try{
+            
             // Cargar vuelos existentes del archivo
             Map<Integer, String> vuelosExistentes = new HashMap<>();
             try (BufferedReader br = new BufferedReader(new FileReader(VUELOS_FILE))) {

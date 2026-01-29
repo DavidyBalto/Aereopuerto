@@ -51,6 +51,10 @@ public class AereopuertoController {
         idContadorAviones++;
     }
 
+    public void agregarAvion(int id, Avion a){
+        aviones.put(id, a);
+    }
+
     public void actualizarAvion(Avion a){
         aviones.put(a.getId(), a);
     }

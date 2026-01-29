@@ -75,7 +75,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
                 //por lo que se debe realizar una sola carga de aviones y aereolines
                 for (Aereopuerto aereopuerto : aereopuertos.values()) {
                     controladorAct = aereopuerto.getControlador();            
-                    modelo.escribirAerolineas(controladorAct.getAereolineas());
+                    modelo.escribirVuelos(controladorAct.getVuelos());
                     aviones.putAll(controladorAct.getAviones());
                     aerolineas.putAll(controladorAct.getAereolineas());
                 }
@@ -240,7 +240,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
         Map<Integer,Aereolinea> aerolineas= new HashMap<>();
         for (Aereopuerto aereopuerto : aereopuertos.values()) {
             controladorAct = aereopuerto.getControlador();            
-            modelo.escribirAerolineas(controladorAct.getAereolineas());
+            modelo.escribirVuelos(controladorAct.getVuelos());
             aviones.putAll(controladorAct.getAviones());
             aerolineas.putAll(controladorAct.getAereolineas());
         }

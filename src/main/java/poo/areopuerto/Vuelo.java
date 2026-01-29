@@ -145,7 +145,7 @@ public class Vuelo {
                     aeroSalida.eliminarAvion(idAvion);
                     
                     // Agregar al aeropuerto de llegada
-                    aeroLlegada.agregarAvion(avion);
+                    aeroLlegada.getControlador().agregarAvion(avion.getId(), avion);
                 }
             }
             return true;

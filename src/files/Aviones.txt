@@ -1,3 +1,5 @@
 1;AvionPasajeros;Z123;Caza;C101;3;false;180;
-2;AvionPasajeros;N67890;AirbusV3;A320;1;false;20;
-3;AvionPasajeros;N000;AvionG;A320;1;false;20;
+2;AvionPasajeros;N67890;AirbusV4;A320;1;false;40;
+3;AvionPasajeros;N000;AvionGG;A320;1;false;40;
+4;AvionPasajeros;Z456;Cazaaa;C101;3;false;180;
+5;AvionPasajeros;N6;Airbus10;A320;2;false;40;
