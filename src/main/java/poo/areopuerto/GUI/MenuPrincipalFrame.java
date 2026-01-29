@@ -65,8 +65,6 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(51, 102, 153));
 
-        imgMenuAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\erick\\Documents\\NetBeansProjects\\AereopuertoOficial\\src\\main\\java\\poo\\areopuerto\\GUI\\resoruces\\menuImage.png")); // NOI18N
-
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BIENVENIDO AL ADMINISTRADOR ");
@@ -104,12 +102,11 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGestionAreopuertos, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnGestionAviones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGestionAreolineas, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(btnGestionVuelos, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnGestionAviones, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnGestionAreolineas)))
+                                .addGap(12, 12, 12)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(imgMenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -129,10 +126,10 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
                         .addComponent(btnGestionVuelos)
                         .addGap(61, 61, 61)
                         .addComponent(btnGestionAreopuertos)
-                        .addContainerGap(65, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imgMenuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(imgMenuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
@@ -170,11 +167,13 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionAvionesActionPerformed
 
     private void btnGestionVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionVuelosActionPerformed
-        // TODO add your handling code here:
+        GesrtionarVuelosFrame gVuelos = new GesrtionarVuelosFrame();
+        gVuelos.setVisible(true);
     }//GEN-LAST:event_btnGestionVuelosActionPerformed
 
     private void btnGestionAreopuertosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAreopuertosActionPerformed
-        // TODO add your handling code here:
+        GestionarAeropuertosFrame gAreopuertos = new GestionarAeropuertosFrame();
+        gAreopuertos.setVisible(true);
     }//GEN-LAST:event_btnGestionAreopuertosActionPerformed
 
     private void btnGestionAreolineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionAreolineasActionPerformed
@@ -186,7 +185,7 @@ public class MenuPrincipalFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

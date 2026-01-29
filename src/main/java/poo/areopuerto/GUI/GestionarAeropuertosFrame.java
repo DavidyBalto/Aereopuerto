@@ -4,6 +4,8 @@
  */
 package poo.areopuerto.GUI;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author erick
@@ -17,6 +19,7 @@ public class GestionarAeropuertosFrame extends javax.swing.JFrame {
      */
     public GestionarAeropuertosFrame() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
