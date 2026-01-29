@@ -297,18 +297,18 @@ public class GesrtionarVuelosFrame extends javax.swing.JFrame {
 
     
     private void programarVuelo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_programarVuelo
-        Aereopuerto aSalida  = (Aereopuerto) cmbAeropuertoSalida.getSelectedItem();
+        Aereopuerto aDestino  = (Aereopuerto) cmbAeropuertoSalida.getSelectedItem();
         Aereolinea aereolinea = (Aereolinea) cmbAerolinea.getSelectedItem();
         Avion avion = (Avion) cmbAvion.getSelectedItem();
         String codigo = codField.getText();
         
         int idAvion = avion.getId();
         
-        if(aSalida==null || aereolinea==null || avion==null || codigo.isEmpty()){
+        if(aDestino==null || aereolinea==null || avion==null || codigo.isEmpty()){
             JOptionPane.showMessageDialog(null, "Por favor complete todos los campos", "Atención", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if(aSalida.getId()==aereopuertoId){
+        if(aDestino.getId()==aereopuertoId){
             JOptionPane.showMessageDialog(null, "El vuelo no puede salir de su propio aeropuerto", "Atención", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -321,7 +321,7 @@ public class GesrtionarVuelosFrame extends javax.swing.JFrame {
         }*/
 
 
-        Vuelo v = new Vuelo(aereopuertos.get(aereopuertoId), aSalida, idAvion, codigo);
+        Vuelo v = new Vuelo(aereopuertos.get(aereopuertoId), aDestino, idAvion, codigo);
     }//GEN-LAST:event_programarVuelo
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked

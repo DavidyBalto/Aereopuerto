@@ -12,6 +12,10 @@ import java.time.LocalDateTime;
  * @author David Proaño
  */
 public class Vuelo {
+    //la logica de la id la manejara el vuelo por si mismo ya que 
+    //el controlador cada que se asgina un vuelo como este se genereaba en 2 controladores 
+    //disitintos el primero le asignaba una id y el segundo otra id diferente generando duplicados innecesarios
+
     private int id;
     private String codigoVuelo;
     private int idAvion;
@@ -81,7 +85,6 @@ public class Vuelo {
         this.estado = estado;
         this.horaSalida = horaSalida;
         this.horaLlegadaEstimada = horaLlegadaEstimada;
-        
         aeroSalida.agregarVuelo(this);
         aeroLlegada.agregarVuelo(this);
     }
