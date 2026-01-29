@@ -9,7 +9,7 @@ import java.util.Map;
 import javax.swing.JFrame;
 import poo.areopuerto.*;
 import poo.areopuerto.controlers.AereopuertoController;
-
+import javax.swing.JOptionPane;
 
 
 /**
@@ -434,13 +434,13 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         try {
             peso=Integer.parseInt(pesoMax);
         }catch(Exception e) {
-            System.out.println("Error en el peso debe ser entero positivo");
+            JOptionPane.showMessageDialog(null, "El peso debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
  
         Avion a = new AvionDeCarga(placa, marca, modelo, aereopuertoActual.getId(), false, peso);
         controlador.agregarAvion(a);
-        Notificador.info("Avion de carga Creado Correctamente");
+        JOptionPane.showMessageDialog(null, "Avion de carga Creado Correctamente", "Éxito en la Operación", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnGuardarAvionCargaActionPerformed
 
     private void btnGuardarAvionPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAvionPasajerosActionPerformed
@@ -453,13 +453,14 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         try {
             cap=Integer.parseInt(capMax);
         }catch(Exception e) {
-            System.out.println("Error en el peso debe ser entero positivo");
+            JOptionPane.showMessageDialog(null, "La capacidad debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         Avion a = new AvionPasajeros(placa, marca, modelo, aereopuertoActual.getId(), false, cap);
         controlador.agregarAvion(a);
         
-        Notificador.info("Avion de pasajeros Creado Correctamente");
+        JOptionPane.showMessageDialog(null, "Avion creado", "Éxito en la Operación", JOptionPane.INFORMATION_MESSAGE);
+        
         
 
     }//GEN-LAST:event_btnGuardarAvionPasajerosActionPerformed
@@ -470,7 +471,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         try {
             idInt=Integer.parseInt(idBusqueda);
         } catch (Exception e) {
-            Notificador.info("No existe un avion con ese id");
+            JOptionPane.showMessageDialog(null, "No existe un avion con ese id", "Busqueda en blanco", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         a=controlador.getAvion(idInt);
@@ -508,8 +509,9 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         int intVar;
         try {
             intVar=Integer.parseInt(variable);
+            if(intVar<0) throw new Exception();
         } catch (Exception e) {
-            Notificador.info("El valor debe ser un entero positivo");
+            JOptionPane.showMessageDialog(null, "El valor debe ser un entero positivo", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         //Aqui podria usar el a que tengo del objeto y cambiar sus propiedades pero esto es mas
