@@ -119,6 +119,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         jToolBar3.setRollover(true);
 
         jPanel4.setBackground(new java.awt.Color(51, 102, 153));
+        jPanel4.setFocusable(false);
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,6 +201,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         jToolBar4.setRollover(true);
 
         jPanel7.setBackground(new java.awt.Color(51, 102, 153));
+        jPanel7.setFocusable(false);
 
         jLabel18.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -284,6 +286,8 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         jToolBar2.setRollover(true);
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 153));
+        jPanel2.setFocusable(false);
+        jPanel2.setPreferredSize(new java.awt.Dimension(389, 300));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -308,6 +312,8 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
 
         txtVariable.setText("Carga");
 
+        variableField.setPreferredSize(new java.awt.Dimension(100, 22));
+
         Actualizar.setText("Actualizar");
         Actualizar.addActionListener(this::ActualizarActionPerformed);
 
@@ -329,15 +335,15 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PBLayout.createSequentialGroup()
-                        .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(marcaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modeloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(marcaField)
+                            .addComponent(modeloField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(Actualizar))
                     .addGroup(PBLayout.createSequentialGroup()
                         .addGroup(PBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(placaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(variableField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(variableField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -368,16 +374,18 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jPanel2.add(PB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 240, 160));
+        jPanel2.add(PB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 260, 160));
 
         jToolBar2.add(jPanel2);
 
         MenuAviones.addTab("Editar Aviones", jToolBar2);
 
         jPanel3.setBackground(new java.awt.Color(51, 102, 153));
+        jPanel3.setFocusable(false);
 
         ListaAviones.setColumns(20);
         ListaAviones.setRows(5);
+        ListaAviones.setFocusable(false);
         jScrollPane1.setViewportView(ListaAviones);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -394,7 +402,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         MenuAviones.addTab("Listar Aviones", jPanel3);
@@ -407,7 +415,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MenuAviones)
+            .addComponent(MenuAviones, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
         );
 
         pack();
@@ -466,10 +474,13 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         a=controlador.getAvion(idInt);
         if(a==null) return;
         PB.setVisible(true);
-        placaField.setText(a.getMarca());
+        placaField.setText(a.getPlaca());
         marcaField.setText(a.getMarca());
         modeloField.setText(a.getModelo());
-        variableField.setText(a.getClass().toString());
+        String clase = a.getClass().getSimpleName();
+        if(clase.equals("AvionDeCarga"))txtVariable.setText("CargaMax");
+        else txtVariable.setText("PasajerosMax");
+
     }//GEN-LAST:event_btnBuscarAvionActionPerformed
 
     private void ListaAviones(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaAviones
@@ -477,8 +488,9 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         System.out.println(menuSeleccionado);
         if(menuSeleccionado==1)PB.setVisible(false);
         if(menuSeleccionado==2){
+            ListaAviones.setText("");
             for (Map.Entry<Integer, Avion> entry : controlador.getAviones().entrySet()) {
-                ListaAviones.append("[" + entry.getKey() + "] " + entry.getValue());
+                ListaAviones.append("[" + entry.getKey() + "] " + entry.getValue()+"\n");
             }
             PB.setVisible(false);
         }
@@ -489,6 +501,24 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         String marca =marcaField.getText();
         String modelo=modeloField.getText();
         String variable=variableField.getText();
+        String clase = a.getClass().getSimpleName();
+        Avion actAvion;
+        int intVar;
+        try {
+            intVar=Integer.parseInt(variable);
+        } catch (Exception e) {
+            Notificador.info("El valor debe ser un entero positivo");
+            return;
+        }
+        //Aqui podria usar el a que tengo del objeto y cambiar sus propiedades pero esto es mas
+        //corto no mas eficiente
+        if(clase.equals("AvionDeCarga")){
+            actAvion=new AvionDeCarga(placa, marca ,modelo,aereopuertoActual.getId(),false,intVar);
+        }else{
+            actAvion=new AvionPasajeros(placa, marca, modelo,aereopuertoActual.getId(),false,intVar);
+        }
+        actAvion.setId(a.getId());
+        controlador.actualizarAvion(actAvion);
         
         
         
