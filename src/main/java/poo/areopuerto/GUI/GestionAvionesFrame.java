@@ -471,11 +471,14 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         try {
             idInt=Integer.parseInt(idBusqueda);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No existe un avion con ese id", "Busqueda en blanco", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El id debe ser un entero", "Id incorrecto", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         a=controlador.getAvion(idInt);
-        if(a==null) return;
+        if(a==null){
+            JOptionPane.showMessageDialog(null, "No existe un avion con ese id", "Busqueda en blanco", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         PB.setVisible(true);
         placaField.setText(a.getPlaca());
         marcaField.setText(a.getMarca());
@@ -488,7 +491,6 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
 
     private void ListaAviones(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaAviones
         int menuSeleccionado=MenuAviones.getSelectedIndex();
-        System.out.println(menuSeleccionado);
         if(menuSeleccionado==1)PB.setVisible(false);
         if(menuSeleccionado==2){
             ListaAviones.setText("");
@@ -523,6 +525,7 @@ public class GestionAvionesFrame extends javax.swing.JFrame {
         }
         actAvion.setId(a.getId());
         controlador.actualizarAvion(actAvion);
+        JOptionPane.showMessageDialog(null, "Avion Actualizado Correctamente", "Éxito en la Operación", JOptionPane.INFORMATION_MESSAGE);
         
         
         

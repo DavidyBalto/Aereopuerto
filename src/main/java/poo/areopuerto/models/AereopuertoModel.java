@@ -9,10 +9,12 @@ import java.io.FileNotFoundException; //no se donde va
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.HashMap;
 
 import poo.areopuerto.*;
+import poo.areopuerto.controlers.AereopuertoController;
 
 /**
  * Modelo para la persistencia de datos del sistema de aeropuerto
@@ -103,12 +105,12 @@ public class AereopuertoModel {
                     aviones.put(id, avion);
                 }
             }
+            int id=AereopuertoController.idContadorAviones;
             for (Avion a : aviones.values()) {
                 aereopuertos.get(a.getAereopuertoId()).agregarAvion(a);
+                id++;
             }
-
-
-
+            AereopuertoController.setIdContadorAviones(id);
         } catch (FileNotFoundException ex) {
             System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } catch (IOException ex) {
@@ -154,9 +156,12 @@ public class AereopuertoModel {
                 aereolinea.setId(id);
                 aerolineas.put(id, aereolinea);
             }
+            int id=AereopuertoController.idContadorAerolineas;
             for (Aereolinea a : aerolineas.values()) {
                 aereopuertos.get(a.getAereopuertoId()).agregarAerolinea(a);
+                id++;
             }
+            AereopuertoController.setIdContadorAerolineas(id);
             return true;
         } catch (FileNotFoundException ex) {
             System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -197,6 +202,7 @@ public class AereopuertoModel {
         try (BufferedReader br = new BufferedReader(new FileReader(VUELOS_FILE))) {
             String linea;
             Map<Integer, Vuelo> vuelos = new HashMap<>();
+            int idG=AereopuertoController.idContadorVuelos;
             while ((linea = br.readLine()) != null) {
                 if (linea.trim().isEmpty()) continue; // Ignorar líneas vacías
                 String[] datos = linea.split(";");
@@ -210,13 +216,21 @@ public class AereopuertoModel {
                 Aereopuerto aeroSalida = aereopuertos.get(idAeroSalida);
                 Aereopuerto aeroLlegada = aereopuertos.get(idAeroLlegada);
                 
+                LocalDateTime horaSalida = LocalDateTime.parse(datos[6]);
+                LocalDateTime horaLlegadaEstimada = LocalDateTime.parse(datos[7]);
                 if (aeroSalida != null && aeroLlegada != null) {
                     // Usar el constructor que recibe objetos Aereopuerto
-                    Vuelo vuelo = new Vuelo(aeroSalida, aeroLlegada, idAvion, codigoVuelo);
+
+                    Vuelo vuelo = new Vuelo(
+                        aeroSalida, aeroLlegada, idAvion,
+                        codigoVuelo, datos[5], horaSalida,
+                        horaLlegadaEstimada, datos[8]);
                     vuelo.setId(id);
                     vuelos.put(id, vuelo);
                 }
+                idG++;
             }
+            AereopuertoController.setIdContadorVuelos(idG);
             return vuelos;
         } catch (FileNotFoundException ex) {
             System.getLogger(AereopuertoModel.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);

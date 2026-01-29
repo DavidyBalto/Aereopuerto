@@ -1,2 +1,3 @@
-1;AvionDeCarga;N12345;Boeing;747F;1;false;140000;
-2;AvionPasajeros;N67890;Airbus;A320;1;false;180;
+1;AvionPasajeros;Z123;Caza;C101;3;false;180;
+2;AvionPasajeros;N67890;AirbusV3;A320;1;false;20;
+3;AvionPasajeros;N000;AvionG;A320;1;false;20;

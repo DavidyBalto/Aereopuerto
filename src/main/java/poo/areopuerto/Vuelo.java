@@ -5,7 +5,7 @@
 package poo.areopuerto;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 
 /**
  * Clase que representa un vuelo
@@ -16,7 +16,7 @@ public class Vuelo {
     private String codigoVuelo;
     private int idAvion;
     private String observaciones;
-    private String estado;  // Usar constantes: programado, retrasado, enVuelo, finalizado
+    private String estado;  // Usar constantes: programado, retrasado, enVuelo, finalizado,cancelado
     private LocalDateTime horaSalida;
     private LocalDateTime horaLlegadaEstimada;
     private LocalDateTime horaLlegadaReal;
@@ -71,29 +71,56 @@ public class Vuelo {
         // NOTA: Este constructor NO se auto-registra (usado solo en carga de archivo)
     }
 
+
+    public Vuelo(Aereopuerto aeroSalida, Aereopuerto aeroLlegada, int idAvion, String codigoVuelo, String estado, LocalDateTime horaSalida, LocalDateTime horaLlegadaEstimada,String observaciones) {
+        this.aeroSalida = aeroSalida;           // ← Guardar referencia
+        this.aeroLlegada = aeroLlegada;         // ← Guardar referencia
+        this.idAvion = idAvion;
+        this.codigoVuelo = codigoVuelo;
+        this.observaciones = observaciones;
+        this.estado = estado;
+        this.horaSalida = horaSalida;
+        this.horaLlegadaEstimada = horaLlegadaEstimada;
+        
+        aeroSalida.agregarVuelo(this);
+        aeroLlegada.agregarVuelo(this);
+    }
+
     /**
      * Cambia el estado del vuelo a "retrasado" y registra el motivo.
      * Solo funciona si el vuelo no ha sido finalizado.
      *
      * @param motivo Descripción del motivo del retraso (ej: "Problema mecánico")
      */
-    public void retrasarVuelo(String motivo) {
-        if (!estado.equals("finalizado")) {
+    public boolean retrasarVuelo(String motivo) {
+        if (!estado.equals("finalizado")|| estado.equals("enVuelo")) {
             this.estado = "retrasado";
             this.observaciones = motivo;
+            return true;
         }
+        return false;
     }
 
+    public boolean cancelarVuelo(String motivo) {
+        if (!estado.equals("finalizado")|| estado.equals("enVuelo")) {
+            this.estado = "cancelado";
+            this.observaciones = motivo;
+            return true;
+        }
+        return false;
+    }
     /**
      * Inicia el vuelo cambiando su estado a "enVuelo".
      * Registra la hora de salida actual.
      * Solo funciona si el vuelo no ha sido finalizado.
      */
-    public void iniciarVuelo() {
-        if (!estado.equals("finalizado")) {
+    public boolean iniciarVuelo() {
+        if (!estado.equals("finalizado")|| estado.equals("cancelado")) {
             this.estado = "enVuelo";
             this.horaSalida = LocalDateTime.now();
+            return true;
         }
+        return false;
     }
 
     /**
@@ -103,8 +130,8 @@ public class Vuelo {
      * al aeropuerto de llegada (simula el aterrizaje del avión).
      * Solo funciona si el vuelo no ha sido finalizado previamente.
      */
-    public void finalizarVuelo() {
-        if (!estado.equals("finalizado")) {
+    public boolean finalizarVuelo() {
+        if (estado.equals("enVuelo")) {
             this.estado = "finalizado";
             this.horaLlegadaReal = LocalDateTime.now();
             
@@ -121,7 +148,9 @@ public class Vuelo {
                     aeroLlegada.agregarAvion(avion);
                 }
             }
+            return true;
         }
+        return false;
     }
 
     /**
@@ -143,7 +172,6 @@ public class Vuelo {
      */
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String delim = ";";
         
         // Obtener IDs desde los aeropuertos (si existen)
@@ -155,8 +183,8 @@ public class Vuelo {
                idLlegada + delim + 
                idAvion + delim + 
                estado + delim + 
-               (horaSalida != null ? horaSalida.format(formatter) : "N/A") + delim +
-               (horaLlegadaEstimada != null ? horaLlegadaEstimada.format(formatter) : "N/A") + delim +
+               (horaSalida != null ? horaSalida.toString() : "N/A") + delim +
+               (horaLlegadaEstimada != null ? horaLlegadaEstimada.toString() : "N/A") + delim +
                observaciones;
     }
     

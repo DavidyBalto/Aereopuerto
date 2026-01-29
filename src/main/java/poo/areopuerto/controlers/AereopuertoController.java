@@ -22,10 +22,10 @@ public class AereopuertoController {
    private Map<Integer, Aereolinea> aereolineas;
    private Map<Integer, Vuelo> vuelos;
    private Map<Integer, Avion> aviones;
-   
-   private int idContadorAviones;
-   private int idContadorAerolineas;
-   private int idContadorVuelos;
+
+   public static int idContadorAviones;
+   public static int idContadorAerolineas;
+   public static int idContadorVuelos;
 
     /**
      * Constructor que inicializa el controlador con colecciones vacías.
@@ -143,5 +143,15 @@ public class AereopuertoController {
    public void setAviones(Map<Integer, Avion> aviones) {
        this.aviones = aviones;
    }
-           
+
+   public static void setIdContadorAviones(int idContadorAviones) {
+       AereopuertoController.idContadorAviones = idContadorAviones;
+   }
+   public static void setIdContadorAerolineas(int idContadorAerolineas) {
+       AereopuertoController.idContadorAerolineas = idContadorAerolineas;
+   }
+   public static void setIdContadorVuelos(int idContadorVuelos) {
+       AereopuertoController.idContadorVuelos = idContadorVuelos;
+   }
+
 }

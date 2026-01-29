@@ -1,2 +1,5 @@
-1;TAME;Ecuador;TM;1
-2;LATAM;Alemania;LA;2
+1;SAT;Argentina;SA;3;
+2;TAME;Ecuador;TM;1;
+3;LATAM;Alemania;LA;2;
+4;TAME;Ecuador;TM;1;
+5;LATAM;Alemania;LA;2;
